@@ -1,4 +1,5 @@
-lang simply-scheme
+#lang simply-scheme
+(require "obj.scm")
 #|
 ;this is week1 lab
 
@@ -95,18 +96,12 @@ lang simply-scheme
 (list l1 l2)
 
 |#
-;week 6 lab
+;week 6 lab scheme1
 ; don't know how to start the interpreter
 
 
-;week 7 lab
-(define-class (counter)
-  (instance-vars (count 0))
-  (class-vars (total 0))
-  (method (next)
-    (set! total (+ total 1))
-    (set! count (+ count 1))
-    (list count total)))
+;week 7 lab oop 
+
 
 (define-class (person name)
   (method (say stuff) stuff)
@@ -128,24 +123,13 @@ lang simply-scheme
   (default-method (* message message))
   (method (7) 'buzz) )
 
-(define-class (counter)
-  (instance-vars (count 0))
-  (class-vars (total 0) (counters '()))
-  (initialize (set! counters (cons self counters)))
-  (method (next)
-    (set! total (+ total 1))
-    (set! count (+ count 1))
-    (list count total)))
-
-(define-class (pigger name)
-  (parent (person name))
-  (method (pigl wd)
-    (if (member? (first wd) '(a e i o u))
-	(word wd 'ay)
-	(ask self 'pigl (word (bf wd) (first wd))) ))
-  (method (say stuff)
-    (if (word? stuff)
-	(if (equal? stuff 'my) (usual 'say stuff) (ask self 'pigl stuff))
-	(map (lambda (w) (ask self 'say w)) stuff))) )
 
 
+(define brian (instantiate person 'brian))
+(ask brian 'repeat)
+(ask brian 'say '(hello))
+(ask brian 'repeat)
+(ask brian 'greet)
+(ask brian 'repeat)
+(ask brian 'ask '(close the door))
+(ask brian 'repeat)
